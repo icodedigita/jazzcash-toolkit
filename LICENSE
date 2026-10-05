@@ -1,0 +1,62 @@
+ICODEDIGITA PROPRIETARY SOFTWARE LICENSE
+
+Copyright (c) 2026 ICODEDIGITA. ALL RIGHTS RESERVED.
+
+This license applies to the JazzCash toolkit published by ICODEDIGITA (the "Software"), including the npm packages
+@icodedigita/jazzcash, @icodedigita/jazzcash-next, @icodedigita/jazzcash-express, @icodedigita/jazzcash-react,
+@icodedigita/jazzcash-react-native, @icodedigita/jazzcash-setup and @icodedigita/n8n-nodes-jazzcash, in every version.
+
+1. GRANT OF USE
+   ICODEDIGITA grants you a non-exclusive, worldwide, royalty-free, non-transferable, non-sublicensable licence to
+   install and use the Software, in the form in which ICODEDIGITA distributes it, in your own applications and in
+   applications you build for your customers, whether personal or commercial, as long as you comply with this licence.
+
+2. RESTRICTIONS
+   You may not, and may not allow anyone else to:
+   (a) modify, adapt, translate or create derivative works of the Software;
+   (b) copy, redistribute, resell, rent, lease, sublicense, publish or make the Software available to others, including
+       by publishing it or any part of it to a package registry, repository or file host, or by offering it as a
+       hosted service;
+   (c) decompile, disassemble, deobfuscate, reverse engineer or otherwise attempt to obtain the source code, logic,
+       algorithms or structure of the Software, except to the extent applicable law expressly permits despite this
+       restriction;
+   (d) remove, alter or obscure any copyright, branding or licence notice;
+   (e) use the Software, or knowledge of its internals gained by prohibited means, to create a competing or
+       substantially similar library, node or tool;
+   (f) use the Software in breach of applicable law or of JazzCash's own terms and requirements.
+
+3. OWNERSHIP
+   The Software is licensed, not sold. ICODEDIGITA retains all rights, title and interest in the Software, including
+   all intellectual property rights. No rights are granted except those expressly stated in this licence.
+
+4. THIRD-PARTY MATERIAL AND NO AFFILIATION
+   The Software is an independent, unofficial toolkit. It is not affiliated with, endorsed by or sponsored by JazzCash,
+   Mobilink Microfinance Bank Limited or any other payment provider. "JazzCash" and related names, logos and
+   documentation belong to their respective owners. Some components the Software relies on (for example n8n) are
+   provided under their own licences, which continue to apply to those components.
+
+5. NO WARRANTY
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, AND THAT IT WILL OPERATE UNINTERRUPTED,
+   ERROR-FREE OR IN A WAY THAT MATCHES THE BEHAVIOUR OF ANY PAYMENT GATEWAY. You are responsible for testing the
+   Software in a sandbox before using it with real payments.
+
+6. LIMITATION OF LIABILITY
+   TO THE MAXIMUM EXTENT PERMITTED BY LAW, ICODEDIGITA WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL,
+   CONSEQUENTIAL OR PUNITIVE DAMAGES, OR FOR ANY LOSS OF PROFITS, REVENUE, DATA, OR PAYMENTS, ARISING FROM OR RELATED
+   TO THE SOFTWARE OR ITS USE, EVEN IF ADVISED OF THE POSSIBILITY. ICODEDIGITA'S TOTAL LIABILITY FOR ALL CLAIMS WILL
+   NOT EXCEED THE AMOUNT YOU PAID FOR THE SOFTWARE, WHICH MAY BE ZERO.
+
+7. TERMINATION
+   This licence ends automatically if you breach it. On termination you must stop using the Software and delete all
+   copies. Sections 2 to 9 survive termination.
+
+8. UPDATES AND CHANGES TO TERMS
+   This licence applies to every version of the Software. ICODEDIGITA may release future versions under different or
+   additional terms; the terms that apply to a version are those distributed with that version.
+
+9. CONTACT
+   Licensing and permission requests: reachus@icodedigita.com
+   Website: https://icodedigita.com
+
+Built for the Pakistani developer community, to help fellow developers and companies.
