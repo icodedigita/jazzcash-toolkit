@@ -6,6 +6,8 @@ Format: [Semantic Versioning](https://semver.org). Generated per release with [C
 
 ## 0.1.0 (first public beta)
 
+Published under the `beta` tag: install with `@beta`. An unofficial wrapper over the JazzCash documentation; ICODEDIGITA does not process payments or see credentials.
+
 - Core: secure hash (ISO-8859-1, per the swagger), hosted checkout, MWallet v2 (CNIC), vouchers, wallet linking and pay-by-token, Apple Pay and Google Pay server endpoints, status inquiry, refunds, IPN, response-code map with developer hints.
 - Route handler for Next.js (App Router) and Express; checkout components for React; WebView for React Native.
 - Setup wizard (browser GUI) with Test Lab, hash calculator, simulator and onboarding guide.

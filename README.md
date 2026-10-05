@@ -1,10 +1,22 @@
 # @icodedigita/jazzcash
 
-**Accept JazzCash payments in your JavaScript app: install, run the setup wizard, done.**
+**A quick way to add JazzCash to your custom apps, without reading through all the documentation.**
+
+Install, run the setup wizard, done.
+
+> **Beta release (0.1.x).** Install with the `@beta` tag. It has been tested against a local simulator and parts of the JazzCash sandbox. Test with your own sandbox account before using real payments, and treat JazzCash's official documentation as the final authority.
 
 > Unofficial. Built by developers for developers. Not affiliated with or endorsed by JazzCash.
 >
 > **By ICODEDIGITA.** Built for the Pakistani developer community, to help fellow developers and companies.
+
+## What this is (and is not)
+
+This is an unofficial wrapper on top of JazzCash's own documentation and API, built to speed up your work. We are not doing anything new in the payment flow: ICODEDIGITA does not process payments, does not hold money, and never sees your credentials, orders or customers. Your app talks directly to JazzCash with your own account. We simply read the original documentation (the PDF guides and the API definition) once and packaged its rules (secure hash, field formats, response codes, test data) so you can integrate in minutes instead of days.
+
+- **Is:** a convenience layer: signing, request building, checkout components, a setup wizard, a test lab and a simulator.
+- **Is not:** a payment gateway, a payment processor, or a replacement for the JazzCash documentation. JazzCash processes every payment.
+- **Is not:** affiliated with or endorsed by JazzCash.
 
 ## Why this exists
 
@@ -14,7 +26,7 @@ We went through that ourselves. Instead of every business writing, debugging and
 
 ## What you get
 
-- **Setup wizard (browser GUI).** `npx @icodedigita/jazzcash-setup` detects your framework, asks for your credentials step by step, updates your `.env` without touching your other variables (with a backup), and creates the route files. Re-run it any time to change values (`edit`).
+- **Setup wizard (browser GUI).** `npx @icodedigita/jazzcash-setup@beta` detects your framework, asks for your credentials step by step, updates your `.env` without touching your other variables (with a backup), and creates the route files. Re-run it any time to change values (`edit`).
 - **Correct signing, always.** Secure hash generation and response verification follow the gateway's swagger. There is no "skip the hash" switch.
 - **Dynamic fields.** `pp_ReturnURL`, `pp_TxnRefNo`, dates (PKT, +1 day), the x100 amount, and the phone number (mapped to `pp_MobileNumber`, `pp_MSISDN`, `ppmpf_1` or `pp_CustomerMobile` as each endpoint needs) are filled for you. `explain()` shows every field and where its value came from.
 - **Payment methods:** hosted checkout (card, mobile account, voucher), MWallet REST v2.0 with CNIC, voucher create/expire, wallet linking and pay-by-token (v4), Apple Pay and Google Pay server endpoints.
@@ -23,7 +35,7 @@ We went through that ourselves. Instead of every business writing, debugging and
 - **Test Lab (in the wizard).** Run the whole integration from the GUI: signing self-test, wallet payments, failure codes, status, vouchers, refunds, wallet linking, hosted-page checks, IPN round trip and more. Works against the simulator with no account, or your sandbox. Each result explains what it proves and what to do if it fails, and you can copy a secret-free report for JazzCash support.
 - **Test-mode console messages.** In simulate/sandbox the server prints a clear "TEST MODE" notice and a one-line diagnostic with a plain-language hint for every failed gateway call; the checkout component shows a test banner and logs the same in the browser console (F12). All of it is off in live mode (and `JAZZCASH_DEBUG=0` silences it).
 - **n8n nodes** so no-code automations can take payments and react to IPNs.
-- **Local simulator.** `npx @icodedigita/jazzcash-setup simulate` runs a stand-in gateway driven by the public sandbox test data (mobile numbers, test cards, wallet linking, tokens). It checks your hash like the real gateway and can deliver IPNs. No JazzCash account needed.
+- **Local simulator.** `npx @icodedigita/jazzcash-setup@beta simulate` runs a stand-in gateway driven by the public sandbox test data (mobile numbers, test cards, wallet linking, tokens). It checks your hash like the real gateway and can deliver IPNs. No JazzCash account needed.
 - **Checkout components** for React: card, mobile account, voucher, Apple Pay, Google Pay.
 - **Types and validation generated from the gateway's swagger** so required fields and allowed values match the source.
 
@@ -44,8 +56,8 @@ Browser-only apps (Vite SPA, Expo/React Native) cannot keep an Integrity Salt, p
 ## Quick start (Next.js)
 
 ```bash
-npm i @icodedigita/jazzcash-next
-npx @icodedigita/jazzcash-setup      # opens the wizard in your browser
+npm i @icodedigita/jazzcash-next@beta
+npx @icodedigita/jazzcash-setup@beta      # opens the wizard in your browser
 ```
 
 1. Pick the features you need.
@@ -102,7 +114,7 @@ Every gateway call then logs a line, and failures add a hint:
 
 In the browser the checkout shows a "Test mode" banner and prints the same hints to the console. In sandbox, a hosted-checkout request for a payment type your merchant is not enabled for is caught on your server with a clear message (HTTP 422) instead of ending on a JazzCash error page. Nothing is logged or shown like this in live mode, and no secret is ever logged.
 
-**Test Lab:** `npx @icodedigita/jazzcash-setup` → *Test lab* tab. Pick simulate (no account) or sandbox and press **Run all checks**. Results are *pass*, *fail*, or *blocked by merchant setup* (JazzCash has not enabled that method for your Merchant ID, which is not an integration error). The hosted-checkout buttons open the payment page in a new tab and bring you back to a result page that verifies the hash.
+**Test Lab:** `npx @icodedigita/jazzcash-setup@beta` → *Test lab* tab. Pick simulate (no account) or sandbox and press **Run all checks**. Results are *pass*, *fail*, or *blocked by merchant setup* (JazzCash has not enabled that method for your Merchant ID, which is not an integration error). The hosted-checkout buttons open the payment page in a new tab and bring you back to a result page that verifies the hash.
 
 ## Configuration
 
@@ -123,7 +135,7 @@ Sandbox and production use the same gateway URL; which one you reach is decided 
 ## Testing without a JazzCash account
 
 ```bash
-npx @icodedigita/jazzcash-setup simulate     # http://127.0.0.1:4455, control panel at /__sim
+npx @icodedigita/jazzcash-setup@beta simulate     # http://127.0.0.1:4455, control panel at /__sim
 ```
 Set `JAZZCASH_MODE=simulate`. The panel lets you force the next outcome (insufficient balance, wrong MPIN, expired, ...), send IPNs, and mark vouchers paid. Test data: mobile `03123456789` + CNIC `345678` succeeds; other numbers produce the documented failures; card expiry `01/39` approves, `05/39` declines, `04/27` expired card, and so on; wallet linking uses OTP `123456` and MPIN `1234`.
 
@@ -144,7 +156,7 @@ The simulator refuses to start, and `simulate` mode refuses to load, when `NODE_
 
 ## n8n
 
-Install the community node in n8n (*Settings → Community Nodes → Install*: `@icodedigita/n8n-nodes-jazzcash`), then add a **JazzCash API** credential (environment, Merchant ID, Password, Integrity Salt, optional MPIN and Return URL).
+Install the community node in n8n (*Settings → Community Nodes → Install*: `@icodedigita/n8n-nodes-jazzcash@beta`; if your n8n version does not accept a tag, use the exact version `@icodedigita/n8n-nodes-jazzcash@0.1.0`), then add a **JazzCash API** credential (environment, Merchant ID, Password, Integrity Salt, optional MPIN and Return URL).
 
 - **JazzCash** node: pick a *Resource* and *Operation* and the options load in:
   - *Payment*: Create Hosted Checkout, Mobile Account Payment, Pay With Token
@@ -160,7 +172,7 @@ The nodes are covered by automated tests with mocked n8n contexts against the si
 
 ## Versioning
 
-All packages share one version and follow [Semantic Versioning](https://semver.org); releases use Changesets and publish to the `latest` and `beta` npm tags. Before 1.0, a minor bump (`0.1 → 0.2`) can change an API, so pin with `~0.1.0` if you want patches only. Check what you run: `npx @icodedigita/jazzcash-setup --version`, or in code `import { VERSION, SPEC } from '@icodedigita/jazzcash'` (`SPEC` is the fingerprint of the JazzCash swagger the build follows). Details in [docs/VERSIONING.md](docs/VERSIONING.md) and [CHANGELOG.md](CHANGELOG.md).
+All packages share one version and follow [Semantic Versioning](https://semver.org); releases use Changesets and publish to the `latest` and `beta` npm tags. Before 1.0, a minor bump (`0.1 → 0.2`) can change an API, so pin with `~0.1.0` if you want patches only. Check what you run: `npx @icodedigita/jazzcash-setup@beta --version`, or in code `import { VERSION, SPEC } from '@icodedigita/jazzcash'` (`SPEC` is the fingerprint of the JazzCash swagger the build follows). Details in [docs/VERSIONING.md](docs/VERSIONING.md) and [CHANGELOG.md](CHANGELOG.md).
 
 ## Going live checklist
 
